@@ -65,15 +65,18 @@ class scanner_sink : public block
 	private:
 		virtual int general_work(int noutput_items, gr_vector_int &ninput_items, gr_vector_const_void_star &input_items, gr_vector_void_star &output_items)
 		{
+			int r = 0;
 			for (int i = 0; i < ninput_items[0]; i++){
-				ProcessVector(((float *)input_items[0]) + i * m_vector_length);
+				r = ProcessVector(((float *)input_items[0]) + i * m_vector_length);
 			}
-			
 			consume_each(ninput_items[0]);
+			if ( r == -1 ) {
+                            return -1;
+			}
 			return 0;
 		}
 		
-		void ProcessVector(float *input)
+		int  ProcessVector(float *input)
 		{
 			//Add the FFT to the total
 			for (unsigned int i = 0; i < m_vector_length; i++){
@@ -101,7 +104,8 @@ class scanner_sink : public block
 						if (m_centre_freq_2 <= m_centre_freq_1){ //we reached the end!
 							//do something to end the scan
 							fprintf(stderr, "[*] Finished scanning\n"); //say we're exiting
-							exit(0); //TODO: This probably isn't the right thing, but it'll do for now
+							return -1;
+							//exit(0); //TODO: This probably isn't the right thing, but it'll do for now
 						}
 						
 						m_centre_freq_1 += m_step; //calculate the frequency we should change to
@@ -113,6 +117,7 @@ class scanner_sink : public block
 					m_wait_count = 0; //new frequency - we've listenned 0 times on it
 				}
 			}
+		    return 0;
 		}
 		
 		void PrintSignals(double *freqs, float *bands1, float *bands2)
