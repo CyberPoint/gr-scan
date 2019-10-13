@@ -2,6 +2,8 @@
 #	gr-scan - A GNU Radio signal scanner
 #	Copyright (C) 2012  Nicholas Tomlinson
 #	
+#       Modified 2019 CyberPoint International
+#
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 3 of the License, or
@@ -15,15 +17,13 @@
 #	You should have received a copy of the GNU General Public License
 #	along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 #
-
-VERSION=2012082301
-CXXFLAGS=-DVERSION="\"gr-scan $(VERSION)\"" -std=c++11 -Wall \
--I/usr/local/include -lgnuradio-pmt -lgnuradio-runtime -lgnuradio-blocks -lgnuradio-fft -lgnuradio-filter -lgnuradio-osmosdr -lboost_system -O2 -Wno-unused-function
+GCC=g++
+VERSION=20191013
+CXXFLAGS=-DVERSION="\"gr-scan $(VERSION)\"" -std=c++11 -Wall -I/usr/local/include -O2 -Wno-unused-function
+LDFLAGS=-lgnuradio-pmt -lgnuradio-runtime -lgnuradio-blocks -lgnuradio-fft -lgnuradio-filter -lgnuradio-osmosdr -lboost_system
 
 gr-scan: *.cpp *.hpp
-	#clang++ $(CXXFLAGS) -o gr-scan main.cpp
-	g++-4.9 $(CXXFLAGS) -o gr-scan main.cpp
-	#g++ $(CXXFLAGS) -o gr-scan main.cpp
+	$(GCC) $(CXXFLAGS) -o gr-scan main.cpp $(LDFLAGS)
 
 clean:
 	rm -f gr-scan gr-scan.tar.gz
