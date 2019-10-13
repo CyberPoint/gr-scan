@@ -1,9 +1,9 @@
 gr-scan
 =======
 
-Frequency scanner for gnuradio. Updated/forked from https://github.com/briand/gr-scan/
+Frequency scanner for gnuradio. Updated/forked from https://github.com/bhattaomatic/gr-scan
 
-Builds on Raspbian and Ubuntu 14.04 LTS. You'll need gnuradio, gr-osmosdr and boost installed to build. gr-scan uses the osmosdr source block so it will run on rtlsdr devices as well as others such as HackRF and BladeRF (This specific repository is tested with BladeRF and works).
+Builds on Ubuntu 16.04.6 LTS. You'll need gnuradio, gr-osmosdr and boost installed to build. gr-scan uses the osmosdr source block so it will run on rtlsdr devices as well as others such as HackRF and BladeRF (This specific repository is tested with BladeRF and works).
 
 ==========
 
