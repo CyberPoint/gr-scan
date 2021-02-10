@@ -19,7 +19,7 @@
 #
 GCC=g++
 VERSION=20191013
-CXXFLAGS=-DVERSION="\"gr-scan $(VERSION)\"" -std=c++11 -Wall -I/usr/local/include -O2 -Wno-unused-function
+CXXFLAGS=-DVERSION="\"gr-scan $(VERSION)\"" -std=c++11 -Wall -I/usr/include -I/usr/local/include -O2 -Wno-unused-function
 LDFLAGS=-lgnuradio-pmt -lgnuradio-runtime -lgnuradio-blocks -lgnuradio-fft -lgnuradio-filter -lgnuradio-osmosdr -lboost_system
 
 gr-scan: *.cpp *.hpp
