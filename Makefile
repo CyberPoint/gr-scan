@@ -18,7 +18,7 @@
 
 VERSION=2012082301
 CXXFLAGS=-DVERSION="\"gr-scan $(VERSION)\"" -std=c++11 -Wall \
--I/usr/local/include -lgnuradio-pmt -lgnuradio-runtime -lgnuradio-blocks -lgnuradio-fft -lgnuradio-filter -lgnuradio-osmosdr -lboost_system -O2 -Wno-unused-function
+-I/usr/local/include -I/usr/include -lgnuradio-pmt -lgnuradio-runtime -lgnuradio-blocks -lgnuradio-fft -lgnuradio-filter -lgnuradio-osmosdr -lboost_system -O2 -Wno-unused-function
 
 gr-scan: *.cpp *.hpp
 	#clang++ $(CXXFLAGS) -o gr-scan main.cpp
